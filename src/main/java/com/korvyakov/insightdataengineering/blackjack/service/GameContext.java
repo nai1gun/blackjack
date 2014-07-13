@@ -2,6 +2,7 @@ package com.korvyakov.insightdataengineering.blackjack.service;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Card;
 import com.korvyakov.insightdataengineering.blackjack.domain.Shoe;
+import com.korvyakov.insightdataengineering.blackjack.domain.ShuffleResult;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -85,8 +86,31 @@ public class GameContext {
         return getPoints(playerCards);
     }
 
+    public boolean isDealerBusted() {
+        return getDealerPoints() > 21;
+    }
+
     public boolean isPlayerBusted() {
         return getPlayerPoints() > 21;
+    }
+
+    public boolean isDealerBlackjack() {
+        return dealerCards.size() == 2 && getDealerPoints() == 21;
+    }
+
+    public boolean isPlayerBlackjack() {
+        return playerCards.size() == 2 && getPlayerPoints() == 21;
+    }
+
+    public ShuffleResult getShuffleResult() {
+        if ((isPlayerBlackjack() && !isDealerBlackjack()) ||
+                (!isPlayerBusted() && (isDealerBusted() || getPlayerPoints() > getDealerPoints()))) {
+            return ShuffleResult.WIN;
+        } else if ((isDealerBlackjack() && !isPlayerBlackjack()) ||
+                (!isDealerBusted() && (isPlayerBusted() || getDealerPoints() > getPlayerPoints()))) {
+            return ShuffleResult.LOOSE;
+        }
+        return ShuffleResult.PUSH;
     }
 
     private static int getPoints(Collection<Card> cards) {

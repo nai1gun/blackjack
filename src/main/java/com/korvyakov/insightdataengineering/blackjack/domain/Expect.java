@@ -35,9 +35,17 @@ public class Expect {
         return expect;
     }
 
+    public static Expect none() {
+        return new Expect();
+    }
+
+    public boolean isNone() {
+        return description == null;
+    }
+
     public String getRegexp() {
-        if (options == null) {
-            throw new IllegalStateException("No options for regexp");
+        if (isNone() || options == null) {
+            throw new IllegalStateException("Wrong state");
         }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < options.length; i++) {
@@ -50,7 +58,9 @@ public class Expect {
     }
 
     public String getPrompt() {
-        if (number) {
+        if (isNone()) {
+            throw new IllegalStateException("Wrong state");
+        } else if (number) {
             return "from " + numberMin + " to " + numberMax;
         } else {
             StringBuilder sb = new StringBuilder();

@@ -1,15 +1,11 @@
 package com.korvyakov.insightdataengineering.blackjack.controller;
 
-import com.korvyakov.insightdataengineering.blackjack.domain.Expect;
 import com.korvyakov.insightdataengineering.blackjack.domain.Output;
 import com.korvyakov.insightdataengineering.blackjack.service.ConsoleEngine;
 import com.korvyakov.insightdataengineering.blackjack.service.GameService;
 import com.korvyakov.insightdataengineering.blackjack.template.TemplateEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * @author nailgun
@@ -27,7 +23,7 @@ public class Controller {
     public void start() {
         currentOutput = gameService.newGame();
         String print = templateEngine.render(currentOutput.getTemplate(), currentOutput.getTemplateModel());
-        consoleEngine.print(print, currentOutput.isExit());
+        consoleEngine.print(print, false);
     }
 
     public void input(String input) {
@@ -52,7 +48,7 @@ public class Controller {
             currentOutput.getTemplateModel().put("mistype", mistype);
         }
         String print = templateEngine.render(currentOutput.getTemplate(), currentOutput.getTemplateModel());
-        consoleEngine.print(print, false);
+        consoleEngine.print(print, currentOutput.isExit());
     }
 
 

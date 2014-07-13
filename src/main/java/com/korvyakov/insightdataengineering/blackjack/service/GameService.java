@@ -26,20 +26,20 @@ public class GameService {
         gameContext.restart();
         stage = applicationContext.getBean(NewGameStartStage.class);
         Map<String, Object> model = createModel();
-        model.put("require", stage.getExpect().getDescription());
         return new Output(stage.getTemplate(), model, stage.getExpect(), false);
     }
 
+    @SuppressWarnings("unchecked")
     public <T> Output action(T input) {
         stage = stage.action(input);
         Map<String, Object> model = createModel();
-        model.put("require", stage.getExpect().getDescription());
-        return new Output(stage.getTemplate(), model, stage.getExpect(), false);
+        return new Output(stage.getTemplate(), model, stage.getExpect(), stage.isExit());
     }
 
     private Map<String, Object> createModel() {
         Map<String, Object> model = new HashMap<>();
         model.put("context", gameContext);
+        model.put("require", stage.getExpect().getDescription());
         return model;
     }
 

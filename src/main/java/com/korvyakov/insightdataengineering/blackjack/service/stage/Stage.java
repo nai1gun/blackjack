@@ -12,6 +12,8 @@ public interface Stage<T> {
 
     String getTemplate();
 
+    boolean isExit();
+
     Stage action(T input);
 
 }
