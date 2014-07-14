@@ -27,6 +27,7 @@ public class DealStage extends AbstractStage<String> {
         if (hit) {
             gameContext.getPlayerCards().add(gameContext.getShoe().takeCard());
             if (gameContext.isPlayerBusted()) {
+                playerLoses();
                 return nextStage();
             } else if(gameContext.getPlayerPoints() == 21) {
                 dealerTurn();

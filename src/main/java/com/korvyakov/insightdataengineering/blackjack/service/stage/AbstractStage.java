@@ -24,7 +24,7 @@ abstract class AbstractStage<T> implements Stage<T> {
 
     protected void playerLoses() {
         if (gameContext.getBet() > gameContext.getTotalChips()) {
-            gameContext.setTotalChips(gameContext.getBet());
+            gameContext.setBet(gameContext.getTotalChips());
         }
     }
 
