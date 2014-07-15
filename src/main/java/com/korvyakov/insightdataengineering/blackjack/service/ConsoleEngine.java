@@ -2,7 +2,7 @@ package com.korvyakov.insightdataengineering.blackjack.service;
 
 import com.korvyakov.insightdataengineering.blackjack.controller.Controller;
 import jline.console.ConsoleReader;
-import org.fusesource.jansi.AnsiConsole;
+import org.fusesource.jansi.Ansi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,7 +21,12 @@ public class ConsoleEngine {
 
     public void print(String output, boolean exit) {
 
-        AnsiConsole.out.println(ansi().eraseScreen().render(output));
+	    Ansi ansi = ansi().eraseScreen().render(output);
+	    if (System.console() != null) {
+		    System.console().writer().println(ansi);
+	    } else {
+		    System.out.println(ansi);
+	    }
         if (exit) {
             System.exit(0);
         }

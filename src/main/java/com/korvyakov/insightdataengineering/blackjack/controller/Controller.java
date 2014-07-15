@@ -4,6 +4,7 @@ import com.korvyakov.insightdataengineering.blackjack.domain.Output;
 import com.korvyakov.insightdataengineering.blackjack.service.ConsoleEngine;
 import com.korvyakov.insightdataengineering.blackjack.service.GameService;
 import com.korvyakov.insightdataengineering.blackjack.template.TemplateEngine;
+import org.fusesource.jansi.AnsiConsole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,7 @@ public class Controller {
     private Output currentOutput;
 
     public void start() {
+	    AnsiConsole.systemInstall();
         currentOutput = gameService.newGame();
         String print = templateEngine.render(currentOutput.getTemplate(), currentOutput.getTemplateModel());
         consoleEngine.print(print, false);
