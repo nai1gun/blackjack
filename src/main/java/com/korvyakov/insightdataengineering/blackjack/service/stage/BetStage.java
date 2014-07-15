@@ -10,21 +10,24 @@ import org.springframework.stereotype.Component;
 @Component
 public class BetStage extends AbstractStage<Integer> {
 
+    private static final String EXPECT_PATTERN = "Please enter new bet from @|bold %s|@ to @|bold %s|@";
+
     @Override
     public Expect getExpect() {
         return Expect.expectNumber(
-                String.format("Please enter new bet from %s to %s", 1, gameContext.getTotalChips()),
+                String.format(EXPECT_PATTERN, 1, gameContext.getTotalChips()),
                 1, gameContext.getTotalChips());
     }
 
     @Override
     public String getTemplate() {
-        return "start";
+        return gameContext.getShoe() == null ? "start" : "next";
     }
 
     @Override
     public Stage action(Integer input) {
         gameContext.setBet(input);
-        return applicationContext.getBean(NewGameStartStage.class);
+        return applicationContext.getBean(gameContext.getShoe() == null ?
+                NewGameStartStage.class : NextGameStartStage.class);
     }
 }

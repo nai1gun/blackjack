@@ -20,7 +20,8 @@ public class ConsoleEngine {
     @Autowired private Controller controller;
 
     public void print(String output, boolean exit) {
-	    AnsiConsole.out.println(ansi().eraseScreen().render(output));
+
+        AnsiConsole.out.println(ansi().eraseScreen().render(output));
         if (exit) {
             System.exit(0);
         }

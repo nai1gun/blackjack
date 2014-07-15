@@ -61,14 +61,14 @@ public class Expect {
         if (isNone()) {
             throw new IllegalStateException("Wrong state");
         } else if (number) {
-            return "from " + numberMin + " to " + numberMax;
+            return String.format("from @|bold,underline %s|@ to @|bold,underline %s|@", numberMin, numberMax);
         } else {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < options.length; i++) {
                 if (i > 0) {
                     sb.append(" or ");
                 }
-                sb.append(options[i]);
+                sb.append(String.format("@|bold,underline %s|@", options[i]));
             }
             return sb.toString();
         }

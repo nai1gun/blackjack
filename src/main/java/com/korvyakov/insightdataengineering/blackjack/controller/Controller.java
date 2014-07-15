@@ -33,7 +33,8 @@ public class Controller {
             try {
                 int inputNumber = Integer.parseInt(input);
                 number = true;
-                matches = (inputNumber >= currentOutput.getExpect().getNumberMin() && inputNumber <= currentOutput.getExpect().getNumberMax());
+                matches = (inputNumber >= currentOutput.getExpect().getNumberMin()
+                        && inputNumber <= currentOutput.getExpect().getNumberMax());
             } catch(NumberFormatException e) {
                 matches = false;
             }

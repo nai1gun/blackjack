@@ -11,9 +11,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class DealStage extends AbstractStage<String> {
 
+    private static final String EXPECT_OPTIONS =
+            "Please enter @|bold,underline h|@ to hit or @|bold,underline s|@ to stay.";
+
     @Override
     public Expect getExpect() {
-        return Expect.expectOptions("Please enter h to hit or s to stay.", "h", "s");
+        return Expect.expectOptions(EXPECT_OPTIONS, "h", "s");
     }
 
     @Override
@@ -27,6 +30,7 @@ public class DealStage extends AbstractStage<String> {
         if (hit) {
             gameContext.getPlayerCards().add(gameContext.getShoe().takeCard());
             if (gameContext.isPlayerBusted()) {
+                playerLoses();
                 return nextStage();
             } else if(gameContext.getPlayerPoints() == 21) {
                 dealerTurn();

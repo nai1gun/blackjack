@@ -52,7 +52,33 @@ public class Card {
     }
 
     public static enum Suit {
-        CLUBS, DIAMONDS, HEARTS, SPADES
+
+        CLUBS("♣", "black"), DIAMONDS("♦", "red"), HEARTS("♥", "red"), SPADES("♠", "black");
+
+        private String symbol;
+
+        private String color;
+
+        private Suit(String symbol, String color) {
+            this.symbol = symbol;
+            this.color = color;
+        }
+
+        public String getSymbol() {
+            return symbol;
+        }
+
+        public void setSymbol(String symbol) {
+            this.symbol = symbol;
+        }
+
+        public String getColor() {
+            return color;
+        }
+
+        public void setColor(String color) {
+            this.color = color;
+        }
     }
 
     public static enum Value {
