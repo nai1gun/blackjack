@@ -1,10 +1,15 @@
-Dealer points: ${context.dealerPoints} <#if context.dealerBusted>@|red (busted)|@</#if><#if context.dealerBlackjack>@|blink_slow,green (Blackjack!)|@</#if>
-<#list context.dealerCards as card><#--
--->|@|${card.suit.color} ${card.suit.symbol}|@ ${card.value}| <#--
---></#list>
-
-<#list context.playerCards as card><#--
--->|@|${card.suit.color} ${card.suit.symbol}|@ ${card.value}| <#--
---></#list>
-
-Player points: ${context.playerPoints} <#if context.playerBusted>@|red (busted)|@</#if><#if context.playerBlackjack>@|blink_slow,green (Blackjack!)|@</#if>
+<#macro cards cardList>
+<#list cardList as card>┌──<#if !card_has_next>────┐</#if></#list>
+<#list cardList as card>│@|${card.suit.color} ${card.value.symbols?right_pad(2)}|@<#if !card_has_next>    │</#if></#list>
+<#list cardList as card>│@|${card.suit.color} ${card.suit.symbol}|@ <#if !card_has_next>    │</#if></#list>
+<#list cardList as card>│  <#if !card_has_next>   @|${card.suit.color} ${card.suit.symbol}|@│</#if></#list>
+<#list cardList as card>│  <#if !card_has_next>  @|${card.suit.color} ${card.value.symbols?left_pad(2)}|@│</#if></#list>
+<#list cardList as card>└──<#if !card_has_next>────┘</#if></#list>
+</#macro>
+<#macro points name numPoints busted bj>
+${name} points: ${numPoints} <#if busted>@|red (busted)|@</#if><#if bj>@|blink_slow,green (Blackjack!)|@</#if>
+</#macro>
+<@points "Dealer" context.dealerPoints context.dealerBusted context.dealerBlackjack/>
+<@cards context.dealerCards/>
+<@cards context.playerCards/>
+<@points "Player" context.playerPoints context.playerBusted context.playerBlackjack/>
