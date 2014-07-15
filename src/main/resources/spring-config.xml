@@ -8,11 +8,16 @@
        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
     <context:annotation-config />
     <context:component-scan base-package="com.korvyakov.insightdataengineering.blackjack"/>
+    <bean id="isUnix" class="java.lang.Boolean">
+        <constructor-arg type="boolean">
+            <util:constant static-field="org.apache.commons.lang3.SystemUtils.IS_OS_UNIX"/>
+        </constructor-arg>
+    </bean>
 	<bean class="java.io.PrintStream" name="printStream">
 		<constructor-arg>
 			<util:constant static-field="java.lang.System.out"/>
 		</constructor-arg>
 		<constructor-arg value="true"/>
-		<constructor-arg value="Cp866"/>
+        <constructor-arg value="#{isUnix ? 'UTF-8' : 'Cp866'}"/>
 	</bean>
 </beans>
