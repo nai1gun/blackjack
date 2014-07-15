@@ -1,14 +1,12 @@
 package com.korvyakov.insightdataengineering.blackjack.service;
 
 import com.korvyakov.insightdataengineering.blackjack.controller.Controller;
-import jline.console.ConsoleReader;
 import org.fusesource.jansi.AnsiConsole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.IOException;
 import java.io.PrintStream;
-import java.io.UnsupportedEncodingException;
+import java.util.Scanner;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
@@ -21,6 +19,7 @@ public class ConsoleEngine {
 
     @Autowired private Controller controller;
 	@Autowired private PrintStream printStream;
+    @Autowired private Scanner scanner;
 
 	public ConsoleEngine() {
 		AnsiConsole.systemInstall();
@@ -32,14 +31,8 @@ public class ConsoleEngine {
         if (exit) {
             System.exit(0);
         }
-        ConsoleReader reader;
-        try {
-            reader = new ConsoleReader();
-            String input = reader.readLine();
-            controller.input(input);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        String input = scanner.nextLine();
+        controller.input(input);
     }
 
 }

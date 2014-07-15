@@ -20,4 +20,9 @@
 		<constructor-arg value="true"/>
         <constructor-arg value="#{isUnix ? 'UTF-8' : 'Cp866'}"/>
 	</bean>
+    <bean class="java.util.Scanner" name="scanner">
+        <constructor-arg>
+            <util:constant static-field="java.lang.System.in"/>
+        </constructor-arg>
+    </bean>
 </beans>
