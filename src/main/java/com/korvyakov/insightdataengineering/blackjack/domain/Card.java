@@ -53,7 +53,7 @@ public class Card {
 
     public static enum Suit {
 
-        CLUBS("♣", "black"), DIAMONDS("♦", "red"), HEARTS("♥", "red"), SPADES("♠", "black");
+        CLUBS("♣", "default"), DIAMONDS("♦", "red"), HEARTS("♥", "red"), SPADES("♠", "default");
 
         private String symbol;
 
