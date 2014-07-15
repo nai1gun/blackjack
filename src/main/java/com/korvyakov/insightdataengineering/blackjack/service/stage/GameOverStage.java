@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class GameOverStage  extends AbstractStage<String>{
 
     private static final String EXPECT_OPTIONS =
-            "Would you like to play another game? (Enter @|bold,underline y|@ or @|bold,underline n|@)";
+            "Would you like to play another game? (Enter @|bold y|@ or @|bold n|@)";
 
     @Override
     public Expect getExpect() {

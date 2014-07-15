@@ -2,11 +2,13 @@ package com.korvyakov.insightdataengineering.blackjack.service;
 
 import com.korvyakov.insightdataengineering.blackjack.controller.Controller;
 import jline.console.ConsoleReader;
-import org.fusesource.jansi.Ansi;
+import org.fusesource.jansi.AnsiConsole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 
 import static org.fusesource.jansi.Ansi.ansi;
 
@@ -18,15 +20,15 @@ import static org.fusesource.jansi.Ansi.ansi;
 public class ConsoleEngine {
 
     @Autowired private Controller controller;
+	@Autowired private PrintStream printStream;
+
+	public ConsoleEngine() {
+		AnsiConsole.systemInstall();
+		//TODO: check 'chcp'
+	}
 
     public void print(String output, boolean exit) {
-
-	    Ansi ansi = ansi().eraseScreen().render(output);
-	    if (System.console() != null) {
-		    System.console().writer().println(ansi);
-	    } else {
-		    System.out.println(ansi);
-	    }
+	    printStream.println(ansi().eraseScreen().render(output));
         if (exit) {
             System.exit(0);
         }

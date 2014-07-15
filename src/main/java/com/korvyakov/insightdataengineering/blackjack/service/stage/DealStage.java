@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 public class DealStage extends AbstractStage<String> {
 
     private static final String EXPECT_OPTIONS =
-            "Please enter @|bold,underline h|@ to hit or @|bold,underline s|@ to stay.";
+            "Please enter @|bold h|@ to hit or @|bold s|@ to stay.";
 
     @Override
     public Expect getExpect() {

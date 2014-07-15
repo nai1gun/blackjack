@@ -14,8 +14,8 @@ import java.util.List;
 abstract class StartStage extends AbstractStage<String> {
 
     private static final String EXPECT_OPTIONS =
-            "Please enter @|bold,underline d|@ to deal, @|bold,underline c|@ to change bet " +
-            "or @|bold,underline e|@ to exit the game.";
+            "Please enter @|bold d|@ to deal, @|bold c|@ to change bet " +
+            "or @|bold e|@ to exit the game.";
 
     @Override
     public Expect getExpect() {
