@@ -18,7 +18,7 @@
 			<util:constant static-field="java.lang.System.out"/>
 		</constructor-arg>
 		<constructor-arg value="true"/>
-        <constructor-arg value="#{isUnix ? 'UTF-8' : 'Cp866'}"/>
+        <constructor-arg value="#{isUnix ? 'UTF-8' : 'Cp850'}"/>
 	</bean>
     <bean class="java.util.Scanner" name="scanner">
         <constructor-arg>
