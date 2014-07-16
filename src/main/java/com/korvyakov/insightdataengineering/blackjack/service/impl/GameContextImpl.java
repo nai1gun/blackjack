@@ -28,70 +28,86 @@ public class GameContextImpl implements GameContext {
 
     private List<Card> dealerCards;
 
-    @Override public void restart() {
+    @Override
+    public void restart() {
         totalChips = DEFAULT_CHIPS;
         bet = DEFAULT_BET;
         playerCards = null;
         dealerCards = null;
     }
 
-    @Override public int getTotalChips() {
+    @Override
+    public int getTotalChips() {
         return totalChips;
     }
 
-    @Override public void setTotalChips(int totalChips) {
+    @Override
+    public void setTotalChips(int totalChips) {
         this.totalChips = totalChips;
     }
 
-    @Override public int getBet() {
+    @Override
+    public int getBet() {
         return bet;
     }
 
-    @Override public void setBet(int bet) {
+    @Override
+    public void setBet(int bet) {
         this.bet = bet;
     }
 
-    @Override public List<Card> getPlayerCards() {
+    @Override
+    public List<Card> getPlayerCards() {
         return playerCards;
     }
 
-    @Override public void setPlayerCards(List<Card> playerCards) {
+    @Override
+    public void setPlayerCards(List<Card> playerCards) {
         this.playerCards = playerCards;
     }
 
-    @Override public List<Card> getDealerCards() {
+    @Override
+    public List<Card> getDealerCards() {
         return dealerCards;
     }
 
-    @Override public void setDealerCards(List<Card> dealerCards) {
+    @Override
+    public void setDealerCards(List<Card> dealerCards) {
         this.dealerCards = dealerCards;
     }
 
-    @Override public int getDealerPoints() {
+    @Override
+    public int getDealerPoints() {
         return getPoints(dealerCards);
     }
 
-    @Override public int getPlayerPoints() {
+    @Override
+    public int getPlayerPoints() {
         return getPoints(playerCards);
     }
 
-    @Override public boolean isDealerBusted() {
+    @Override
+    public boolean isDealerBusted() {
         return getDealerPoints() > 21;
     }
 
-    @Override public boolean isPlayerBusted() {
+    @Override
+    public boolean isPlayerBusted() {
         return getPlayerPoints() > 21;
     }
 
-    @Override public boolean isDealerBlackjack() {
+    @Override
+    public boolean isDealerBlackjack() {
         return dealerCards.size() == 2 && getDealerPoints() == 21;
     }
 
-    @Override public boolean isPlayerBlackjack() {
+    @Override
+    public boolean isPlayerBlackjack() {
         return playerCards.size() == 2 && getPlayerPoints() == 21;
     }
 
-    @Override public ShuffleResult getShuffleResult() {
+    @Override
+    public ShuffleResult getShuffleResult() {
         if ((isPlayerBlackjack() && !isDealerBlackjack()) ||
                 (!isPlayerBusted() && (isDealerBusted() || getPlayerPoints() > getDealerPoints()))) {
             return ShuffleResult.WIN;

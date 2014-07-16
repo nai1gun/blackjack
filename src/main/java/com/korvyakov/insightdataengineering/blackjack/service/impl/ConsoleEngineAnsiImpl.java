@@ -26,7 +26,8 @@ public class ConsoleEngineAnsiImpl implements ConsoleEngine {
 		AnsiConsole.systemInstall();
 	}
 
-    @Override public void print(String output, boolean exit) {
+    @Override
+    public void print(String output, boolean exit) {
 	    printStream.println(ansi().eraseScreen().render(output));
         if (exit) {
             System.exit(0);

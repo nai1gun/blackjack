@@ -31,4 +31,5 @@ abstract class AbstractStage<T> implements Stage<T> {
     protected void push() {
         gameContext.setTotalChips(gameContext.getTotalChips() + gameContext.getBet());
     }
+
 }

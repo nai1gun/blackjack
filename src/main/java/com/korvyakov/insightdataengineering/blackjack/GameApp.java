@@ -14,7 +14,6 @@ public class GameApp {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         Controller controller = context.getBean(Controller.class);
         controller.start();
-
     }
 
 }

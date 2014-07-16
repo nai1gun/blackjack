@@ -29,7 +29,8 @@ public class ControllerImpl implements Controller {
         consoleEngine.print(print, false);
     }
 
-    @Override public void input(String input) {
+    @Override
+    public void input(String input) {
         boolean matches;
         boolean number = false;
         if (currentOutput.getExpect().isNumber()) {

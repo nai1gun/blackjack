@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class GoodByeStage extends AbstractStage<String> {
+
     @Override
     public Expect getExpect() {
         return Expect.none();
@@ -28,4 +29,5 @@ public class GoodByeStage extends AbstractStage<String> {
     public boolean isExit() {
         return true;
     }
+
 }

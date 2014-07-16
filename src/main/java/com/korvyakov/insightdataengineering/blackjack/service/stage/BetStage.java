@@ -30,4 +30,5 @@ public class BetStage extends AbstractStage<Integer> {
         return applicationContext.getBean(gameContext.getPlayerCards() == null ?
                 NewGameStartStage.class : NextGameStartStage.class);
     }
+
 }

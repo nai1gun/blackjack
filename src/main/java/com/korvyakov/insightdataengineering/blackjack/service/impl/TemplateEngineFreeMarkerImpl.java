@@ -26,7 +26,8 @@ public class TemplateEngineFreeMarkerImpl implements TemplateEngine {
 
 	@Autowired private TemplateHelper templateHelper;
 
-    @Override public String render(String templateName, Map<String, Object> model) {
+    @Override
+    public String render(String templateName, Map<String, Object> model) {
 	    model.put("h", templateHelper);
         Configuration templateCfg = new Configuration();
         templateCfg.setClassForTemplateLoading(this.getClass(), TEMPLATE_DIR);

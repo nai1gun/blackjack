@@ -52,4 +52,5 @@ abstract class StartStage extends AbstractStage<String> {
         }
         return applicationContext.getBean(GoodByeStage.class);
     }
+
 }
