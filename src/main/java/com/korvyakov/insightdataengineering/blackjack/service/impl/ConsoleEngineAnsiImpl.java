@@ -24,7 +24,6 @@ public class ConsoleEngineAnsiImpl implements ConsoleEngine {
 
 	public ConsoleEngineAnsiImpl() {
 		AnsiConsole.systemInstall();
-		//TODO: check 'chcp'
 	}
 
     @Override public void print(String output, boolean exit) {
