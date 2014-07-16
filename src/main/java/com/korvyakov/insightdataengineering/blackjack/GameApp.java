@@ -6,6 +6,10 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class GameApp {
 
+	/**
+	 * Application entry point
+	 * @param args command line arguments
+	 */
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("spring-config.xml");
         Controller controller = context.getBean(Controller.class);

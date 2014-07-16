@@ -1,6 +1,8 @@
 package com.korvyakov.insightdataengineering.blackjack.domain;
 
 /**
+ * Contains the data application expect from user
+ *
  * @author nailgun
  * @since 13.07.14
  */

@@ -3,6 +3,8 @@ package com.korvyakov.insightdataengineering.blackjack.domain;
 import java.util.Map;
 
 /**
+ * Contains everything that is necessary for the UI output
+ *
  * @author nailgun
  * @since 13.07.14
  */

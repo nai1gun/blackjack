@@ -1,6 +1,8 @@
 package com.korvyakov.insightdataengineering.blackjack.domain;
 
 /**
+ * Playing card structure
+ *
  * @author nailgun
  * @since 13.07.14
  */

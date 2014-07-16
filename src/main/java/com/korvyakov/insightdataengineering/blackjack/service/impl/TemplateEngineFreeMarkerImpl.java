@@ -14,6 +14,8 @@ import java.io.Writer;
 import java.util.Map;
 
 /**
+ * Renders the output data using FreeMarker template engine
+ *
  * @author nailgun
  * @since 12.07.14
  */
