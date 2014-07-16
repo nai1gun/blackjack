@@ -20,26 +20,27 @@ import java.util.Map;
 @Component
 public class TemplateEngineFreeMarkerImpl implements TemplateEngine {
 
+	private static final String TEMPLATE_DIR = "/com/korvyakov/insightdataengineering/blackjack/template";
+
 	@Autowired private TemplateHelper templateHelper;
 
     @Override public String render(String templateName, Map<String, Object> model) {
 	    model.put("h", templateHelper);
         Configuration templateCfg = new Configuration();
-        templateCfg.setClassForTemplateLoading(this.getClass(),
-		        "/com/korvyakov/insightdataengineering/blackjack/template");
+        templateCfg.setClassForTemplateLoading(this.getClass(), TEMPLATE_DIR);
         templateCfg.setDefaultEncoding("UTF-8");
         templateCfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
         Template template;
         try {
             template = templateCfg.getTemplate(templateName + ".ftl");
         } catch (IOException e) {
-            throw new IllegalStateException("Couldn't load template with name '" + templateName + "'", e);
+            throw new IllegalStateException(String.format("Couldn't load template with name '%s'", templateName), e);
         }
         Writer resultWriter = new StringWriter();
         try {
             template.process(model, resultWriter);
         } catch (TemplateException | IOException e) {
-            throw new IllegalStateException("Error while processing template '" + templateName + "'", e);
+            throw new IllegalStateException(String.format("Error while processing template '%s'", templateName), e);
         }
         return resultWriter.toString();
     }

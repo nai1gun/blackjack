@@ -13,8 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DealStage extends AbstractStage<String> {
 
-    private static final String EXPECT_OPTIONS =
-            "Please enter @|bold h|@ to hit or @|bold s|@ to stay.";
+    private static final String EXPECT_OPTIONS = "Please enter @|bold h|@ to hit or @|bold s|@ to stay.";
 
 	@Autowired private Shoe shoe;
 

@@ -15,6 +15,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class ControllerImpl implements Controller {
 
+	private static final String MISTYPE_TEMPLATE = "You entered '%s' Please enter %s";
+
     @Autowired private GameService gameService;
     @Autowired private ConsoleEngine consoleEngine;
     @Autowired private TemplateEngine templateEngine;
@@ -45,8 +47,7 @@ public class ControllerImpl implements Controller {
         if (matches) {
             currentOutput = gameService.action(number? Integer.parseInt(input): input);
         } else {
-            String mistype = String.format("You entered '%s' Please enter %s",
-                    input, currentOutput.getExpect().getPrompt());
+            String mistype = String.format(MISTYPE_TEMPLATE, input, currentOutput.getExpect().getPrompt());
             currentOutput.getTemplateModel().put("mistype", mistype);
         }
         String print = templateEngine.render(currentOutput.getTemplate(), currentOutput.getTemplateModel());
