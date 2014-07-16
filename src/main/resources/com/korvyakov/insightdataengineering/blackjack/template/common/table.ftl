@@ -2,8 +2,8 @@
 <#macro cards cardList>
 <#list cardList as card>┌──<#if !card_has_next>────┐</#if></#list>
 <#list cardList as card>│<@color card.suit.color>${card.value.symbols?right_pad(2)}</@color><#if !card_has_next>    │</#if></#list>
-<#list cardList as card>│<@color card.suit.color>${card.suit.symbol}</@color> <#if !card_has_next>    │</#if></#list>
-<#list cardList as card>│  <#if !card_has_next>   <@color card.suit.color>${card.suit.symbol}</@color>│</#if></#list>
+<#list cardList as card>│<@color card.suit.color>${h.suit(card.suit)}</@color> <#if !card_has_next>    │</#if></#list>
+<#list cardList as card>│  <#if !card_has_next>   <@color card.suit.color>${h.suit(card.suit)}</@color>│</#if></#list>
 <#list cardList as card>│  <#if !card_has_next>  <@color card.suit.color>${card.value.symbols?left_pad(2)}</@color>│</#if></#list>
 <#list cardList as card>└──<#if !card_has_next>────┘</#if></#list>
 </#macro>

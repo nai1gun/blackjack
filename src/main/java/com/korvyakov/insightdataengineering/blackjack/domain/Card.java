@@ -53,14 +53,17 @@ public class Card {
 
     public static enum Suit {
 
-        CLUBS("♣", "default"), DIAMONDS("♦", "red"), HEARTS("♥", "red"), SPADES("♠", "default");
+        CLUBS("♣", "c", "default"), DIAMONDS("♦", "d", "red"), HEARTS("♥", "h", "red"), SPADES("♠", "s", "default");
 
-        private String symbol;
+        private final String symbol;
 
-        private String color;
+	    private final String alternativeSymbol;
 
-        private Suit(String symbol, String color) {
+        private final String color;
+
+        private Suit(String symbol, String alternativeSymbol, String color) {
             this.symbol = symbol;
+	        this.alternativeSymbol = alternativeSymbol;
             this.color = color;
         }
 
@@ -68,17 +71,13 @@ public class Card {
             return symbol;
         }
 
-        public void setSymbol(String symbol) {
-            this.symbol = symbol;
-        }
-
         public String getColor() {
             return color;
         }
 
-        public void setColor(String color) {
-            this.color = color;
-        }
+	    public String getAlternativeSymbol() {
+		    return alternativeSymbol;
+	    }
     }
 
     public static enum Value {

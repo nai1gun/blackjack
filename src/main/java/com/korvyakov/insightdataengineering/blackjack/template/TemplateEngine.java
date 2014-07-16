@@ -1,9 +1,11 @@
 package com.korvyakov.insightdataengineering.blackjack.template;
 
+import com.korvyakov.insightdataengineering.blackjack.service.TemplateHelper;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateExceptionHandler;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -18,7 +20,10 @@ import java.util.Map;
 @Component
 public class TemplateEngine {
 
+	@Autowired private TemplateHelper templateHelper;
+
     public String render(String templateName, Map<String, Object> model) {
+	    model.put("h", templateHelper);
         Configuration templateCfg = new Configuration();
         templateCfg.setClassForTemplateLoading(this.getClass(), "");
         templateCfg.setDefaultEncoding("UTF-8");
