@@ -14,12 +14,12 @@ import java.util.Arrays;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-config.xml")
-public class GameContextTest {
+public class GameContextTests {
 
     @Autowired private GameContext gameContext;
 
     @Test
-    public void playerBusted() {
+    public void playerBustedTest() {
         gameContext.restart();
         gameContext.setPlayerCards(Arrays.asList(
             new Card(Card.Value.KING, Card.Suit.CLUBS),
@@ -30,7 +30,7 @@ public class GameContextTest {
     }
 
     @Test
-    public void dealerBusted() {
+    public void dealerBustedTest() {
         gameContext.restart();
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.KING, Card.Suit.CLUBS),
@@ -44,7 +44,7 @@ public class GameContextTest {
     }
 
     @Test
-    public void player21DealerBj() {
+    public void player21DealerBjTest() {
         gameContext.restart();
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.QUEEN, Card.Suit.DIAMONDS),
@@ -57,7 +57,7 @@ public class GameContextTest {
     }
 
     @Test
-    public void dealer21PlayerBj() {
+    public void dealer21PlayerBjTest() {
         gameContext.restart();
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.ACE, Card.Suit.CLUBS),
@@ -71,7 +71,7 @@ public class GameContextTest {
     }
 
     @Test
-    public void same() {
+    public void sameTest() {
         gameContext.restart();
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.QUEEN, Card.Suit.DIAMONDS),
@@ -84,7 +84,7 @@ public class GameContextTest {
     }
 
     @Test
-    public void blackjacks() {
+    public void blackjacksTest() {
         gameContext.restart();
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.QUEEN, Card.Suit.DIAMONDS),

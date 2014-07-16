@@ -54,5 +54,11 @@ public class ControllerImpl implements Controller {
         consoleEngine.print(print, currentOutput.isExit());
     }
 
-
+    /**
+     * For usage is unit tests only
+     * @param currentOutput current output
+     */
+    public void setCurrentOutput(Output currentOutput) {
+        this.currentOutput = currentOutput;
+    }
 }
