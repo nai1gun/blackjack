@@ -18,4 +18,8 @@ public class TemplateHelper {
 		return isUnix? suit.getSymbol(): suit.getAlternativeSymbol();
 	}
 
+    public String getCopyright() {
+        return isUnix? "©": "(c)";
+    }
+
 }
