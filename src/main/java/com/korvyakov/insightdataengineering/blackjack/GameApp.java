@@ -1,6 +1,6 @@
 package com.korvyakov.insightdataengineering.blackjack;
 
-import com.korvyakov.insightdataengineering.blackjack.controller.Controller;
+import com.korvyakov.insightdataengineering.blackjack.service.Controller;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

@@ -1,6 +1,7 @@
-package com.korvyakov.insightdataengineering.blackjack.service;
+package com.korvyakov.insightdataengineering.blackjack.service.impl;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Card;
+import com.korvyakov.insightdataengineering.blackjack.service.Shoe;
 import org.springframework.stereotype.Component;
 
 import java.util.LinkedList;
@@ -12,18 +13,18 @@ import java.util.Random;
  * @since 16.07.14
  */
 @Component
-public class RandomShoe implements Shoe {
+public class ShoeRandomImpl implements Shoe {
 
 	private int numberOfSets;
 
 	private List<Card> cards;
 
-	public RandomShoe(int numberOfSets) {
+	public ShoeRandomImpl(int numberOfSets) {
 		this.numberOfSets = numberOfSets;
 		reload();
 	}
 
-	public RandomShoe() {
+	public ShoeRandomImpl() {
 		this(1);
 	}
 

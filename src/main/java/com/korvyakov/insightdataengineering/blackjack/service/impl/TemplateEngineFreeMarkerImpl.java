@@ -1,6 +1,6 @@
-package com.korvyakov.insightdataengineering.blackjack.template;
+package com.korvyakov.insightdataengineering.blackjack.service.impl;
 
-import com.korvyakov.insightdataengineering.blackjack.service.TemplateHelper;
+import com.korvyakov.insightdataengineering.blackjack.service.TemplateEngine;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
@@ -18,14 +18,15 @@ import java.util.Map;
  * @since 12.07.14
  */
 @Component
-public class TemplateEngine {
+public class TemplateEngineFreeMarkerImpl implements TemplateEngine {
 
 	@Autowired private TemplateHelper templateHelper;
 
-    public String render(String templateName, Map<String, Object> model) {
+    @Override public String render(String templateName, Map<String, Object> model) {
 	    model.put("h", templateHelper);
         Configuration templateCfg = new Configuration();
-        templateCfg.setClassForTemplateLoading(this.getClass(), "");
+        templateCfg.setClassForTemplateLoading(this.getClass(),
+		        "/com/korvyakov/insightdataengineering/blackjack/template");
         templateCfg.setDefaultEncoding("UTF-8");
         templateCfg.setTemplateExceptionHandler(TemplateExceptionHandler.IGNORE_HANDLER);
         Template template;

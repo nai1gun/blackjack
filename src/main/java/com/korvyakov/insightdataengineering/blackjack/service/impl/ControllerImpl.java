@@ -1,9 +1,10 @@
-package com.korvyakov.insightdataengineering.blackjack.controller;
+package com.korvyakov.insightdataengineering.blackjack.service.impl;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Output;
 import com.korvyakov.insightdataengineering.blackjack.service.ConsoleEngine;
+import com.korvyakov.insightdataengineering.blackjack.service.Controller;
 import com.korvyakov.insightdataengineering.blackjack.service.GameService;
-import com.korvyakov.insightdataengineering.blackjack.template.TemplateEngine;
+import com.korvyakov.insightdataengineering.blackjack.service.TemplateEngine;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +13,7 @@ import org.springframework.stereotype.Component;
  * @since 13.07.14
  */
 @Component
-public class Controller {
+public class ControllerImpl implements Controller {
 
     @Autowired private GameService gameService;
     @Autowired private ConsoleEngine consoleEngine;
@@ -20,13 +21,13 @@ public class Controller {
 
     private Output currentOutput;
 
-    public void start() {
+    @Override public void start() {
         currentOutput = gameService.newGame();
         String print = templateEngine.render(currentOutput.getTemplate(), currentOutput.getTemplateModel());
         consoleEngine.print(print, false);
     }
 
-    public void input(String input) {
+    @Override public void input(String input) {
         boolean matches;
         boolean number = false;
         if (currentOutput.getExpect().isNumber()) {

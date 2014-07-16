@@ -1,4 +1,4 @@
-package com.korvyakov.insightdataengineering.blackjack.service;
+package com.korvyakov.insightdataengineering.blackjack.service.impl;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Card;
 import org.springframework.stereotype.Component;
