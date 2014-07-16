@@ -1,7 +1,6 @@
 package com.korvyakov.insightdataengineering.blackjack.service;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Card;
-import com.korvyakov.insightdataengineering.blackjack.domain.Shoe;
 import com.korvyakov.insightdataengineering.blackjack.domain.ShuffleResult;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +23,6 @@ public class GameContext {
 
     private int bet;
 
-    private Shoe shoe;
-
     private List<Card> playerCards;
 
     private List<Card> dealerCards;
@@ -33,7 +30,6 @@ public class GameContext {
     public void restart() {
         totalChips = DEFAULT_CHIPS;
         bet = DEFAULT_BET;
-        shoe = null;
         playerCards = null;
         dealerCards = null;
     }
@@ -52,14 +48,6 @@ public class GameContext {
 
     public void setBet(int bet) {
         this.bet = bet;
-    }
-
-    public Shoe getShoe() {
-        return shoe;
-    }
-
-    public void setShoe(Shoe shoe) {
-        this.shoe = shoe;
     }
 
     public List<Card> getPlayerCards() {

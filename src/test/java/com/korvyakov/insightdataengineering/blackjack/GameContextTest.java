@@ -1,7 +1,6 @@
 package com.korvyakov.insightdataengineering.blackjack;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Card;
-import com.korvyakov.insightdataengineering.blackjack.domain.Shoe;
 import com.korvyakov.insightdataengineering.blackjack.domain.ShuffleResult;
 import com.korvyakov.insightdataengineering.blackjack.service.GameContext;
 import junit.framework.Assert;
@@ -22,7 +21,6 @@ public class GameContextTest {
     @Test
     public void playerBusted() {
         gameContext.restart();
-        gameContext.setShoe(new Shoe());
         gameContext.setPlayerCards(Arrays.asList(
             new Card(Card.Value.KING, Card.Suit.CLUBS),
             new Card(Card.Value.KING, Card.Suit.CLUBS),
@@ -34,7 +32,6 @@ public class GameContextTest {
     @Test
     public void dealerBusted() {
         gameContext.restart();
-        gameContext.setShoe(new Shoe());
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.KING, Card.Suit.CLUBS),
                 new Card(Card.Value.SIX, Card.Suit.CLUBS),
@@ -49,7 +46,6 @@ public class GameContextTest {
     @Test
     public void player21DealerBj() {
         gameContext.restart();
-        gameContext.setShoe(new Shoe());
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.QUEEN, Card.Suit.DIAMONDS),
                 new Card(Card.Value.KING, Card.Suit.HEARTS),
@@ -63,7 +59,6 @@ public class GameContextTest {
     @Test
     public void dealer21PlayerBj() {
         gameContext.restart();
-        gameContext.setShoe(new Shoe());
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.ACE, Card.Suit.CLUBS),
                 new Card(Card.Value.TEN, Card.Suit.CLUBS)));
@@ -78,7 +73,6 @@ public class GameContextTest {
     @Test
     public void same() {
         gameContext.restart();
-        gameContext.setShoe(new Shoe());
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.QUEEN, Card.Suit.DIAMONDS),
                 new Card(Card.Value.KING, Card.Suit.HEARTS)));
@@ -92,7 +86,6 @@ public class GameContextTest {
     @Test
     public void blackjacks() {
         gameContext.restart();
-        gameContext.setShoe(new Shoe());
         gameContext.setPlayerCards(Arrays.asList(
                 new Card(Card.Value.QUEEN, Card.Suit.DIAMONDS),
                 new Card(Card.Value.ACE, Card.Suit.HEARTS)));

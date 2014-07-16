@@ -1,7 +1,6 @@
 package com.korvyakov.insightdataengineering.blackjack.service;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Output;
-import com.korvyakov.insightdataengineering.blackjack.service.stage.NewGameStartStage;
 import com.korvyakov.insightdataengineering.blackjack.service.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -24,7 +23,7 @@ public class GameService {
 
     public Output newGame() {
         gameContext.restart();
-        stage = applicationContext.getBean(NewGameStartStage.class);
+        stage = applicationContext.getBean("startStage", Stage.class);
         Map<String, Object> model = createModel();
         return new Output(stage.getTemplate(), model, stage.getExpect(), false);
     }

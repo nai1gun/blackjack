@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
  * @author nailgun
  * @since 13.07.14
  */
-@Component
+@Component("startStage")
 public class NewGameStartStage extends StartStage {
 
     @Override

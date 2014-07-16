@@ -21,13 +21,13 @@ public class BetStage extends AbstractStage<Integer> {
 
     @Override
     public String getTemplate() {
-        return gameContext.getShoe() == null ? "start" : "next";
+        return gameContext.getPlayerCards() == null ? "start" : "next";
     }
 
     @Override
     public Stage action(Integer input) {
         gameContext.setBet(input);
-        return applicationContext.getBean(gameContext.getShoe() == null ?
+        return applicationContext.getBean(gameContext.getPlayerCards() == null ?
                 NewGameStartStage.class : NextGameStartStage.class);
     }
 }

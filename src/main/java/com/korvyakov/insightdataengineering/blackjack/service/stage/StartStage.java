@@ -2,7 +2,8 @@ package com.korvyakov.insightdataengineering.blackjack.service.stage;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Card;
 import com.korvyakov.insightdataengineering.blackjack.domain.Expect;
-import com.korvyakov.insightdataengineering.blackjack.domain.Shoe;
+import com.korvyakov.insightdataengineering.blackjack.service.Shoe;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,6 +18,8 @@ abstract class StartStage extends AbstractStage<String> {
             "Please enter @|bold d|@ to deal, @|bold c|@ to change bet " +
             "or @|bold e|@ to exit the game.";
 
+	@Autowired private Shoe shoe;
+
     @Override
     public Expect getExpect() {
         return Expect.expectOptions(EXPECT_OPTIONS, "d", "c", "e");
@@ -26,8 +29,7 @@ abstract class StartStage extends AbstractStage<String> {
     public Stage action(String input) {
         if ("d".equals(input)) {
             gameContext.setTotalChips(gameContext.getTotalChips() - gameContext.getBet());
-            Shoe shoe = new Shoe();
-            gameContext.setShoe(shoe);
+	        shoe.reload();
             List<Card> playerCards = new LinkedList<>();
             List<Card> dealerCards = new LinkedList<>();
             playerCards.add(shoe.takeCard());

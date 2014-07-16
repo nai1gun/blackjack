@@ -2,6 +2,8 @@ package com.korvyakov.insightdataengineering.blackjack.service.stage;
 
 import com.korvyakov.insightdataengineering.blackjack.domain.Expect;
 import com.korvyakov.insightdataengineering.blackjack.domain.ShuffleResult;
+import com.korvyakov.insightdataengineering.blackjack.service.Shoe;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +15,8 @@ public class DealStage extends AbstractStage<String> {
 
     private static final String EXPECT_OPTIONS =
             "Please enter @|bold h|@ to hit or @|bold s|@ to stay.";
+
+	@Autowired private Shoe shoe;
 
     @Override
     public Expect getExpect() {
@@ -28,7 +32,7 @@ public class DealStage extends AbstractStage<String> {
     public Stage action(String input) {
         boolean hit = "h".equals(input);
         if (hit) {
-            gameContext.getPlayerCards().add(gameContext.getShoe().takeCard());
+            gameContext.getPlayerCards().add(shoe.takeCard());
             if (gameContext.isPlayerBusted()) {
                 playerLoses();
                 return nextStage();
@@ -45,7 +49,7 @@ public class DealStage extends AbstractStage<String> {
 
     private void dealerTurn() {
         while(gameContext.getDealerPoints() < 17) {
-            gameContext.getDealerCards().add(gameContext.getShoe().takeCard());
+            gameContext.getDealerCards().add(shoe.takeCard());
         }
         if (gameContext.getShuffleResult() == ShuffleResult.WIN) {
             playerWins();
