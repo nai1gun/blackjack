@@ -3,20 +3,17 @@ Blsckjack
 
 Text-based Blackjack game written in Java.
 
-System requirements
--------------------
+###System requirements
 * MacOs X, Windows XP or later, Linux
 * Java 7 or later
 
-How to launch application
--------------------------
+###How to launch application
 Open command line in `target` directory then run command:
 
 ```sh
 java -jar BlackJack-single.jar
 ```
-How to build from sources
--------------------------
+###How to build from sources
 First install [Maven] on your computer
 
 ```sh
@@ -24,13 +21,10 @@ mvn package
 ```
 Then executable file will appear in `target` directory
 
-License
--------
-
+###License
 MIT
 
-Author
-------
+###Author
 [Alexander Korvyakov]
 
 ####Have a fun game!
