@@ -35,6 +35,7 @@ then run `chcp 850` command and then relaunch the game.
 
 ##### Known issues:
 * Card suit symbols cannot be displayed on Windows command line. There are corresponding letters instead.
+* Blink effect works only on MacOs X
 
 [Maven]:http://maven.apache.org/
 [Alexander Korvyakov]:http://korvyakov.com
