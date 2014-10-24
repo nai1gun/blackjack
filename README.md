@@ -15,6 +15,7 @@ java -jar BlackJack-single.jar
 ```
 ###How to build from sources
 First install [Maven] on your computer
+
 Then open command line in project root and run command:
 
 ```sh
