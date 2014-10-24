@@ -1,4 +1,4 @@
-Blsckjack
+Blackjack
 =========
 
 Text-based Blackjack game written in Java.
